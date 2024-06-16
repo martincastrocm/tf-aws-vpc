@@ -6,7 +6,7 @@ locals {
   private_subnets_cidrs = zipmap(local.azs, length(var.subnets.private.cidrs) > 0 ? var.subnets.private.cidrs : [for k, v in local.azs : cidrsubnet(var.vpc.cidr, 8, k + length(local.azs))])
 }
 
-data "aws_availability_zones" "available" {}
+data "aws_availability_zones"       "available" {}
 
 ################################################################################
 # VPC
